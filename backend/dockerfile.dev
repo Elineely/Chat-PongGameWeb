@@ -1,0 +1,21 @@
+# Dockerfile.dev
+
+FROM node:20-alpine
+
+WORKDIR /app
+
+EXPOSE 4000
+
+COPY ./nest_project/package.json .
+
+# COPY ./npm_init.sh .
+
+# CMD [ "/bin/sh", "./entrypoint.sh" ]
+# RUN sh ./npm_init.sh
+
+# RUN npm i -g @nestjs/cli
+
+# CMD ["ash", "-c", "while true; do sleep 1; done"]
+
+# ENTRYPOINT npm i && npm rebuild && npm run start
+ENTRYPOINT npm i && npm rebuild && npm run start:dev

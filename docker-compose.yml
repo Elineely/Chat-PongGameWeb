@@ -1,0 +1,82 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15.3-alpine3.18
+    container_name: db
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+        - ./db:/var/lib/postgresql/data
+      # - db-data:/var/lib/postgresql/data
+    networks:
+      - backend-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    ports:
+      - "5050:80"
+    networks:
+      - backend-db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "${PGADMIN_DEFAULT_EMAIL}"
+      PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_DEFAULT_PASSWORD}"
+    depends_on:
+      - db
+
+  #dev side
+  backend-dev:
+    build:
+      context: ./backend
+      dockerfile: dockerfile.dev
+    container_name: backend-dev
+    restart: always
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend/nest_project:/app
+    depends_on:
+      - db
+    networks:
+      - backend-db
+      - frontend-backend
+    environment:
+      POSTGRES_HOST:     "${POSTGRES_HOST}"
+      POSTGRES_PORT:     "${POSTGRES_PORT}"
+      POSTGRES_USER:     "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB:       "${POSTGRES_DB}"
+
+  frontend-dev:
+    build:
+      context: ./frontend
+      dockerfile: dockerfile.dev
+    container_name: frontend-dev
+    restart: always
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./frontend/front:/app
+    networks:
+      - frontend-backend
+    depends_on:
+      - backend-dev
+    env_file:
+      - ./frontend/front/pages/.env.local
+
+
+networks:
+  backend-db:
+    driver: bridge
+  frontend-backend:
+    driver: bridge
+
+# volumes:
+#   db-data:
