@@ -49,5 +49,10 @@ make
 ```
 
 ### 선행 조건
-1. 레포지토리 내부 3개의 .env 파일에 사용자의 api key 정보를 수정해야합니다.
+1. 레포지토리 내부에 존재하는,다음 경로의 3개의 .env 파일에 사용자 정보를 수정해야합니다.
+   <img width="594" alt="스크린샷 2024-01-02 오후 12 59 06" src="https://github.com/Elineely/Chat-PongGameWeb/assets/80635378/bad7e851-235f-4975-be64-de86b7321203">
+  <img width="756" alt="스크린샷 2024-01-02 오후 12 59 23" src="https://github.com/Elineely/Chat-PongGameWeb/assets/80635378/b1f6bfb4-a834-4b15-bdcc-1311d5d222a5">
+아래 .env.local 파일의 경우, url을 수정시 사용자가 수정해야합니다.
+<img width="811" alt="스크린샷 2024-01-02 오후 1 01 40" src="https://github.com/Elineely/Chat-PongGameWeb/assets/80635378/5ded9199-ba68-455a-bc9d-0477f1e2b5d7">
+
 2. make 명령 전, 도커가 실행중이어야 합니다.
