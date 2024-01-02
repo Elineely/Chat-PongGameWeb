@@ -41,7 +41,7 @@ git clone https://github.com/Elineely/Chat-PongGameWeb.git
 ```
 2. clone 한 폴더에 들어갑니다.
 ```
-cd CreateHTTPServerFromBottom
+cd Chat-PongGameWeb
 ```
 3. makefile을 실행시키면 도커 컨테이너가 띄워지고 서버가 run 됩니다.
 ```
