@@ -15,7 +15,7 @@ Chat&PongGame은 nestjs, nextjs 프레임 워크를 사용해서 만든 웹 서�
 
 ## 👩🏻‍💻개발 멤버 구성
 ### back-end
-- 이수린 : docker 개발환경 구축, 채팅 도메인 서버 개발
+- 이수린 : 채팅 도메인 서버 개발, docker 개발환경 구축
 - 곽진솔 : 게임 도메인 개발
 - 최재영 : login, porfile 도메인 서버 개발 
 ### front-end
