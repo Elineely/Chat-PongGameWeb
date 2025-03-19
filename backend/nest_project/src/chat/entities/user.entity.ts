@@ -9,11 +9,11 @@ import { MessageEntity } from "./message.entity";
 export class UserEntity {
 
   @OneToOne(() => UserProfile)
-  @JoinColumn({ name: 'user_profile_id' }) // 외래키 컬럼 이름
+  @JoinColumn({ name: 'user_profile_id' }) 
   // @JoinColumn() // 외래키 없애기
   userProfile: UserProfile;
 
-  @PrimaryColumn({ type: 'integer', unique: true, nullable: false}) //외래키 한번에 지정 할 수 있나?
+  @PrimaryColumn({ type: 'integer', unique: true, nullable: false}) 
   id: number;
 
   @ManyToMany(() => RoomEntity, (room) => room.users)
