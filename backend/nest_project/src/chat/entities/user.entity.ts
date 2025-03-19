@@ -10,7 +10,6 @@ export class UserEntity {
 
   @OneToOne(() => UserProfile)
   @JoinColumn({ name: 'user_profile_id' }) 
-  // @JoinColumn() // 외래키 없애기
   userProfile: UserProfile;
 
   @PrimaryColumn({ type: 'integer', unique: true, nullable: false}) 
